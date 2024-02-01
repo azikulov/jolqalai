@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 import '@/assets/styles/globals.scss';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['cyrillic'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   title: 'JolQalai',
@@ -16,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='kz'>
-      <body className={inter.className}>{children}</body>
+      <head>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+        />
+      </head>
+      <body className={inter.variable}>{children}</body>
     </html>
   );
 }

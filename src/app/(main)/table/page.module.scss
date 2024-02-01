@@ -1,0 +1,169 @@
+.wrapper {
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.header {
+  &__title {
+    color: #343a40;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  column-gap: 0.375rem;
+  align-items: center;
+  margin-top: 0.5rem;
+
+  &__link {
+    color: #414a52;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    &:hover {
+      color: #1d2022;
+    }
+  }
+
+  &__text {
+    color: #343a40;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1.25rem;
+
+  box-shadow: 0 0 4px 2px #343a401c;
+  border-radius: 0.5rem;
+  background: #fff;
+  padding: 0.875rem 1.25rem;
+
+  &__field {
+    transition: 0.2s ease;
+    border: 1px solid rgba(52, 58, 64, 0.5);
+
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+
+    width: 100%;
+    max-width: 12rem;
+    color: #343a40;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    @media (max-width: 768px) {
+      padding: 0.325rem 0.5rem;
+      font-size: 0.75rem;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 4px var(--color-primary-25);
+      border-color: var(--color-primary);
+    }
+  }
+
+  &__search-button {
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: center;
+    border-radius: 0.25rem;
+
+    background: var(--color-primary);
+
+    padding: 0.5rem 1.5rem 0.5rem 0.75rem;
+
+    @media (max-width: 768px) {
+      padding: 0.45rem 0.5rem;
+    }
+
+    svg {
+      flex-shrink: 0;
+      width: 1.25rem;
+      height: 1.25rem;
+      color: #fff;
+
+      @media (max-width: 768px) {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    span {
+      color: #fff;
+      font-weight: 500;
+      font-size: 0.875rem;
+
+      @media (max-width: 768px) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+.main {
+  margin-top: 2rem;
+
+  box-shadow: 0 0 4px 2px #343a401c;
+  border-radius: 0.5rem;
+  background: #fff;
+
+  padding: 0.875rem 1.25rem;
+
+  &__title {
+    color: #1d2022;
+    font-weight: 600;
+    font-size: 1.125rem;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  margin-top: 1rem;
+
+  border-collapse: collapse;
+  width: 100%;
+
+  // thead tr th,
+  // tbody tr td {
+  //   border: 1px solid #343a40;
+  // }
+
+  thead {
+    tr {
+      th {
+        padding: 0.375rem 0;
+        padding-right: 1rem;
+
+        color: #343a40;
+        font-size: 0.875rem;
+        text-align: start;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        padding: 0.375rem 0;
+        padding-right: 1rem;
+        font-size: 0.875rem;
+        white-space: nowrap;
+      }
+    }
+  }
+}
