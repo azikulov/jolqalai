@@ -1,6 +1,8 @@
 'use client';
 
 import cn from 'classnames';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 import Link from 'next/link';
 import MapIcon from '@/assets/icons/nav/map.svg';
@@ -9,9 +11,10 @@ import ExitIcon from '@/assets/icons/nav/exit.svg';
 import MenuIcon from '@/assets/icons/nav/burger.svg';
 import TableIcon from '@/assets/icons/nav/table.svg';
 import styles from './layout.module.scss';
-import { useState } from 'react';
 
 export default function MainLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = usePathname();
+
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const handleToggle = () => {
@@ -42,21 +45,30 @@ export default function MainLayout({ children }: Readonly<{ children: React.Reac
         <nav className={styles['nav']}>
           <ul className={styles['nav__list']}>
             <li className={styles['nav__item']}>
-              <Link className={cn(styles['nav__link'], styles['active'])} href='/table'>
+              <Link
+                className={cn(styles['nav__link'], pathname.includes('/table') && styles['active'])}
+                href='/table'
+              >
                 <TableIcon className={styles['nav__link-icon']} />
                 <span className={styles['nav__link-text']}>Таблица</span>
               </Link>
             </li>
 
             <li className={styles['nav__item']}>
-              <Link className={styles['nav__link']} href='/map'>
+              <Link
+                className={cn(styles['nav__link'], pathname.includes('/map') && styles['active'])}
+                href='/map'
+              >
                 <MapIcon className={styles['nav__link-icon']} />
                 <span className={styles['nav__link-text']}>Карта</span>
               </Link>
             </li>
 
             <li className={styles['nav__item']}>
-              <Link className={styles['nav__link']} href='/users'>
+              <Link
+                className={cn(styles['nav__link'], pathname.includes('/users') && styles['active'])}
+                href='/users'
+              >
                 <UserIcon className={styles['nav__link-icon']} />
                 <span className={styles['nav__link-text']}>Пользователи</span>
               </Link>
