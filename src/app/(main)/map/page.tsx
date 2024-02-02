@@ -1,5 +1,8 @@
 'use client';
 
+import { useMemo, useState } from 'react';
+import Cities from './cities.json';
+
 import Map, {
   FullscreenControl,
   GeolocateControl,
@@ -11,15 +14,13 @@ import Map, {
 import Link from 'next/link';
 import styles from './page.module.scss';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import CITIES from './cities.json';
-import { useMemo, useState } from 'react';
 
 export default function MapPage() {
   const [popupInfo, setPopupInfo] = useState<any>(null);
 
   const pins = useMemo(
     () =>
-      CITIES.map((city: any, index) => (
+      Cities.map((city: any, index) => (
         <Marker
           key={`marker-${index}`}
           longitude={city.longitude}
@@ -54,13 +55,12 @@ export default function MapPage() {
       <div className={styles['main']}>
         <Map
           initialViewState={{
-            latitude: 40,
-            longitude: -100,
-            zoom: 3.5,
+            latitude: 49.80889236276244,
+            longitude: 73.1091787640697,
+            zoom: 12,
             bearing: 0,
             pitch: 0,
           }}
-          // style={{ width: '100%', height: 300 }}
           mapStyle='mapbox://styles/mapbox/dark-v9'
           mapboxAccessToken={
             'pk.eyJ1IjoiYXppa3Vsb3YiLCJhIjoiY2xzM3Y4b3cwMHo1aDJwbWVoaTkwN2t1eCJ9.SbYQVyer5eYtViYE63aRAQ'
@@ -93,44 +93,10 @@ export default function MapPage() {
             </Popup>
           )}
         </Map>
-
-        {/* <Map
-          mapboxAccessToken='pk.eyJ1IjoiYXppa3Vsb3YiLCJhIjoiY2xzM3Y4b3cwMHo1aDJwbWVoaTkwN2t1eCJ9.SbYQVyer5eYtViYE63aRAQ'
-          initialViewState={{
-            longitude: -122.4,
-            latitude: 37.8,
-            zoom: 14,
-          }}
-          style={{ width: 600, height: 400 }}
-          mapStyle='mapbox://styles/mapbox/streets-v9'
-        /> */}
       </div>
     </div>
   );
 }
-
-//  {/* <Map
-//           initialViewState={{
-//             latitude: 40,
-//             longitude: -100,
-//             zoom: 3.5,
-//             bearing: 0,
-//             pitch: 0,
-//           }}
-//           style={{
-//             width: '500px',
-//             height: '500px',
-//           }}
-//           mapStyle='mapbox://styles/mapbox/dark-v9'
-//           mapboxAccessToken={
-//             'pk.eyJ1IjoiYXppa3Vsb3YiLCJhIjoiY2xzM3Y4b3cwMHo1aDJwbWVoaTkwN2t1eCJ9.SbYQVyer5eYtViYE63aRAQ'
-//           }
-//         >
-//           {/* <GeolocateControl position='top-left' />
-//           <FullscreenControl position='top-left' />
-//           <NavigationControl position='top-left' />
-//           <ScaleControl /> */}
-//         </Map> */}
 
 const ICON = `M20.2,15.7L20.2,15.7c1.1-1.6,1.8-3.6,1.8-5.7c0-5.6-4.5-10-10-10S2,4.5,2,10c0,2,0.6,3.9,1.6,5.4c0,0.1,0.1,0.2,0.2,0.3
   c0,0,0.1,0.1,0.1,0.2c0.2,0.3,0.4,0.6,0.7,0.9c2.6,3.1,7.4,7.6,7.4,7.6s4.8-4.5,7.4-7.5c0.2-0.3,0.5-0.6,0.7-0.9
