@@ -1,0 +1,43 @@
+.wrapper {
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
+
+.header {
+  &__title {
+    color: #343a40;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  column-gap: 0.375rem;
+  align-items: center;
+  margin-top: 0.5rem;
+
+  &__link {
+    color: #414a52;
+    font-weight: 500;
+    font-size: 0.875rem;
+
+    &:hover {
+      color: #1d2022;
+    }
+  }
+
+  &__text {
+    color: #343a40;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+}
+
+.main {
+  margin-top: 2rem;
+  height: 100%;
+}
