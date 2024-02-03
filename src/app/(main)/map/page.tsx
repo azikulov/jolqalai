@@ -1,22 +1,27 @@
 'use client';
 
-import { useMemo, useState } from 'react';
 import Cities from './cities.json';
+import { useMemo, useState } from 'react';
+import { MAPBOXGL_TOKEN } from '@/config';
+import type { MapPin } from '@/types/map';
 
-import Map, {
+import {
+  Marker,
+  Popup,
+  Map,
   FullscreenControl,
   GeolocateControl,
-  Marker,
   NavigationControl,
-  Popup,
   ScaleControl,
 } from 'react-map-gl';
 import Link from 'next/link';
+import PinIcon from '@/assets/icons/map/pin.svg';
 import styles from './page.module.scss';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import '@/assets/styles/mapboxgl.scss';
 
 export default function MapPage() {
-  const [popupInfo, setPopupInfo] = useState<any>(null);
+  const [popupInfo, setPopupInfo] = useState<MapPin | null>(null);
 
   const pins = useMemo(
     () =>
@@ -33,7 +38,7 @@ export default function MapPage() {
             setPopupInfo(city);
           }}
         >
-          <Pin />
+          <PinIcon className={styles['marker-pin']} />
         </Marker>
       )),
     [],
@@ -62,9 +67,7 @@ export default function MapPage() {
             pitch: 0,
           }}
           mapStyle='mapbox://styles/mapbox/dark-v9'
-          mapboxAccessToken={
-            'pk.eyJ1IjoiYXppa3Vsb3YiLCJhIjoiY2xzM3Y4b3cwMHo1aDJwbWVoaTkwN2t1eCJ9.SbYQVyer5eYtViYE63aRAQ'
-          }
+          mapboxAccessToken={MAPBOXGL_TOKEN}
         >
           <GeolocateControl position='top-left' />
           <FullscreenControl position='top-left' />
@@ -76,20 +79,13 @@ export default function MapPage() {
           {popupInfo && (
             <Popup
               anchor='top'
+              className={styles['mapboxgl-popup']}
               longitude={Number(popupInfo.longitude)}
               latitude={Number(popupInfo.latitude)}
               onClose={() => setPopupInfo(null)}
             >
-              <div>
-                {popupInfo.city}, {popupInfo.state} |{' '}
-                <a
-                  target='_new'
-                  href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${popupInfo.city}, ${popupInfo.state}`}
-                >
-                  Wikipedia
-                </a>
-              </div>
-              <img width='100%' src={popupInfo.image} />
+              <p className={styles['mapboxgl-popup__title']}>{popupInfo.city}</p>
+              <img className={styles['mapboxgl-popup__img']} width='100%' src={popupInfo.image} />
             </Popup>
           )}
         </Map>

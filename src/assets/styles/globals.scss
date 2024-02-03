@@ -35,13 +35,3 @@ select {
   color: inherit;
   font-family: inherit;
 }
-
-.mapboxgl-map {
-  width: 100% !important;
-  height: calc(100vh - 4rem) !important;
-
-  @media (max-width: 768px) {
-    aspect-ratio: 1/1;
-    height: 100% !important;
-  }
-}

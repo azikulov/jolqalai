@@ -1,0 +1,23 @@
+.mapboxgl-map {
+  border-radius: 0.5rem;
+  width: 100% !important;
+  height: calc(100vh - 4rem) !important;
+
+  @media (max-width: 768px) {
+    aspect-ratio: 1/1;
+    height: 100% !important;
+  }
+}
+
+.mapboxgl-popup {
+  &-content {
+    border-radius: 0.25rem;
+    padding: 1rem;
+  }
+
+  &-close-button {
+    width: 1.875rem;
+    height: 1.875rem;
+    font-size: 1.5rem;
+  }
+}
