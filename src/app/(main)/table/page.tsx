@@ -18,9 +18,14 @@ export default function Table() {
         </div>
       </div>
       <div className={styles['filters']}>
-        <select className={styles['filters__field']}>
-          <option value='user'>user</option>
-        </select>
+        <input
+          inputMode='numeric'
+          type='number'
+          className={styles['filters__field']}
+          placeholder='Поиск по ID'
+        />
+
+        <input type='text' className={styles['filters__field']} placeholder='Поиск по Улице' />
 
         <input type='date' className={styles['filters__field']} />
 
@@ -38,19 +43,17 @@ export default function Table() {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Пользователь</th>
                 <th>Улица</th>
-                <th>Км/ч</th>
                 <th>Время</th>
+                <th>Фотография</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>10449875</td>
-                <td>Bones</td>
                 <td>проспект Бухар Жырау</td>
-                <td>93.43</td>
                 <td>2023-09-06 10:05:27</td>
+                <td>Фото</td>
               </tr>
             </tbody>
           </table>
