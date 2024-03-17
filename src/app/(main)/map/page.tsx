@@ -28,12 +28,10 @@ export default function MapPage() {
       Cities.map((city: any, index) => (
         <Marker
           key={`marker-${index}`}
-          longitude={city.longitude}
           latitude={city.latitude}
+          longitude={city.longitude}
           anchor='bottom'
           onClick={(e) => {
-            // If we let the click event propagates to the map, it will immediately close the popup
-            // with `closeOnClick: true`
             e.originalEvent.stopPropagation();
             setPopupInfo(city);
           }}
@@ -66,7 +64,7 @@ export default function MapPage() {
             bearing: 0,
             pitch: 0,
           }}
-          mapStyle='mapbox://styles/mapbox/dark-v9'
+          mapStyle='mapbox://styles/mapbox/satellite-streets-v12'
           mapboxAccessToken={MAPBOXGL_TOKEN}
         >
           <GeolocateControl position='top-left' />
@@ -80,12 +78,13 @@ export default function MapPage() {
             <Popup
               anchor='top'
               className={styles['mapboxgl-popup']}
-              longitude={Number(popupInfo.longitude)}
               latitude={Number(popupInfo.latitude)}
+              longitude={Number(popupInfo.longitude)}
               onClose={() => setPopupInfo(null)}
             >
-              <p className={styles['mapboxgl-popup__title']}>{popupInfo.city}</p>
-              <img className={styles['mapboxgl-popup__img']} width='100%' src={popupInfo.image} />
+              <p className={styles['mapboxgl-popup__title']}>Дата: {popupInfo.date}</p>
+              <p className={styles['mapboxgl-popup__title']}>Время: {popupInfo.time}</p>
+              <img className={styles['mapboxgl-popup__img']} width='100%' src={`/assets/photos/${popupInfo.photo}`} />
             </Popup>
           )}
         </Map>

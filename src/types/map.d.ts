@@ -1,6 +1,8 @@
 export interface MapPin {
-  city: string;
-  image: string;
+  id: number;
+  date: string;
+  time: string;
+  photo: string;
   latitude: number;
   longitude: number;
 }

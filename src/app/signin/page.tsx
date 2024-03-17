@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { AuthService } from '@/api/services/Auth';
+import { AuthService } from '@/api/services/auth';
+import type { User } from '@/api/models/auth';
 
 import styles from './page.module.scss';
-import { User } from '@/api/models/Auth';
 
 export default function Signin() {
   const { register, handleSubmit } = useForm<User>();
