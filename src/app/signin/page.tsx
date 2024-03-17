@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { AuthService } from '@/api/services/auth';
-import type { User } from '@/api/models/auth';
+import { AuthService } from '@/api/services/Auth';
+import type { User } from '@/api/models/Auth';
 
 import styles from './page.module.scss';
 

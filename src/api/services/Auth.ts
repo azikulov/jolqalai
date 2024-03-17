@@ -1,6 +1,6 @@
 import apiClient from '@/api';
 import type { AxiosResponse } from 'axios';
-import type { LoginResponse, User } from '../models/auth';
+import type { LoginResponse, User } from '../models/Auth';
 
 export class AuthService {
   static async login({ email, password }: User): Promise<AxiosResponse<LoginResponse>> {
