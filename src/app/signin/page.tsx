@@ -1,3 +1,5 @@
+"use client"
+
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { AuthService } from '@/api/services/auth';
@@ -8,16 +10,16 @@ import styles from './page.module.scss';
 export default function Signin() {
   const { register, handleSubmit } = useForm<User>();
 
-  const login = useMutation({
-    mutationKey: ['login'],
-    mutationFn: AuthService.login,
-  });
+  // const login = useMutation({
+  //   mutationKey: ['login'],
+  //   mutationFn: AuthService.login,
+  // });
 
   const handleAuth = async (user: User) => {
     try {
-      const response = await login.mutateAsync(user);
+      // const response = await login.mutateAsync(user);
 
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.error('[JolQalai] Произошла ошибка при авторизаций пользователя!');
       throw error;
@@ -42,8 +44,10 @@ export default function Signin() {
           {...register('password')}
         />
 
-        <button disabled={login.isLoading} type='submit' className={styles['form__submit']}>
-          {login.isLoading ? 'Загрузка...' : 'Войти'}
+        {/* <button disabled={login.isLoading} type='submit' className={styles['form__submit']}> */}
+          {/* {login.isLoading ? 'Загрузка...' : 'Войти'} */}
+        <button  type='submit' className={styles['form__submit']}>
+          Войти
         </button>
       </form>
     </div>
