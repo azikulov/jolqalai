@@ -1,11 +1,22 @@
 .mapboxgl-map {
   border-radius: 0.5rem;
+  
   width: 100% !important;
   height: calc(100vh - 4rem) !important;
 
+  & > canvas {
+    width: 100% !important;
+    height: calc(100vh - 4rem) !important;
+  }
+  
   @media (max-width: 768px) {
     aspect-ratio: 1/1;
     height: 100% !important;
+    
+    & > canvas {
+      aspect-ratio: 1/1;
+      height: 100% !important;
+    }
   }
 }
 
