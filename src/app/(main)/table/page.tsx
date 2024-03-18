@@ -3,8 +3,12 @@
 import Link from 'next/link';
 import SearchIcon from '@/assets/icons/field/search.svg';
 import styles from './page.module.scss';
+import Cities from '../map/cities.json';
+import { useState } from 'react';
 
-export default function Table() {
+const Table: React.FC = () => {
+  const [searchValue, setSearchValue] = useState<string>('');
+
   return (
     <div className={styles['wrapper']}>
       <div className={styles['header']}>
@@ -17,17 +21,19 @@ export default function Table() {
           <span className={styles['breadcrumb__text']}>Таблица</span>
         </div>
       </div>
+
       <div className={styles['filters']}>
         <input
-          inputMode='numeric'
           type='number'
+          inputMode='numeric'
           className={styles['filters__field']}
           placeholder='Поиск по ID'
+          onChange={({target: {value}}) => setSearchValue(value)}
         />
 
-        <input type='text' className={styles['filters__field']} placeholder='Поиск по Улице' />
+        <input type='text' onChange={({target: {value}}) => setSearchValue(value)} className={styles['filters__field']} placeholder='Поиск по Улице' />
 
-        <input type='date' className={styles['filters__field']} />
+        <input type='date' onChange={({target: {value}}) => setSearchValue(value)} className={styles['filters__field']} />
 
         <button className={styles['filters__search-button']}>
           <SearchIcon />
@@ -48,17 +54,26 @@ export default function Table() {
                 <th>Фотография</th>
               </tr>
             </thead>
+
             <tbody>
-              <tr>
-                <td>10449875</td>
-                <td>проспект Бухар Жырау</td>
-                <td>2023-09-06 10:05:27</td>
-                <td>Фото</td>
-              </tr>
+              {Cities.filter((city) => String(city.id).includes(searchValue)).map((city, key) => (
+                <tr key={key}>
+                  <td>{city.id}</td>
+                  <td>{city.latitude}</td>
+                  <td>
+                    {city.date} {city.time}
+                  </td>
+                  <td>
+                    <img src={`/assets/photos/${city.photo}`} alt='' />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default Table;
