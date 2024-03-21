@@ -49,7 +49,7 @@ const Table: React.FC = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Улица</th>
+                {/* <th>Улица</th> */}
                 <th>Время</th>
                 <th>Фотография</th>
               </tr>
@@ -59,7 +59,7 @@ const Table: React.FC = () => {
               {Cities.filter((city) => String(city.id).includes(searchValue)).map((city, key) => (
                 <tr key={key}>
                   <td>{city.id}</td>
-                  <td>{city.latitude}</td>
+                  {/* <td>{city.latitude}</td> */}
                   <td>
                     {city.date} {city.time}
                   </td>
