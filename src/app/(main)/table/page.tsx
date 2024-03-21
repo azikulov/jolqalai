@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import ModalImage from 'react-modal-image';
 import SearchIcon from '@/assets/icons/field/search.svg';
 import styles from './page.module.scss';
 import Cities from '../map/cities.json';
@@ -28,12 +29,21 @@ const Table: React.FC = () => {
           inputMode='numeric'
           className={styles['filters__field']}
           placeholder='Поиск по ID'
-          onChange={({target: {value}}) => setSearchValue(value)}
+          onChange={({ target: { value } }) => setSearchValue(value)}
         />
 
-        <input type='text' onChange={({target: {value}}) => setSearchValue(value)} className={styles['filters__field']} placeholder='Поиск по Улице' />
+        <input
+          type='text'
+          onChange={({ target: { value } }) => setSearchValue(value)}
+          className={styles['filters__field']}
+          placeholder='Поиск по Улице'
+        />
 
-        <input type='date' onChange={({target: {value}}) => setSearchValue(value)} className={styles['filters__field']} />
+        <input
+          type='date'
+          onChange={({ target: { value } }) => setSearchValue(value)}
+          className={styles['filters__field']}
+        />
 
         <button className={styles['filters__search-button']}>
           <SearchIcon />
@@ -64,7 +74,12 @@ const Table: React.FC = () => {
                     {city.date} {city.time}
                   </td>
                   <td>
-                    <img src={`/assets/photos/${city.photo}`} alt='' />
+                    <ModalImage
+                    className={styles['table__image']}
+                      large={`/assets/photos/${city.photo}`}
+                      small={`/assets/photos/${city.photo}`}
+                      alt=''
+                    />
                   </td>
                 </tr>
               ))}
